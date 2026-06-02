@@ -1,0 +1,24 @@
+{
+  "rules": {
+    "rooms": {
+      "$sessionId": {
+        "participants": {
+          "$userId": {
+            ".read":  "auth != null",
+            ".write": "auth != null && auth.uid == $userId"
+          }
+        },
+        "signals": {
+          "$targetUserId": {
+            ".read":  "auth != null && auth.uid == $targetUserId",
+            ".write": "auth != null"
+          }
+        },
+        "chat": {
+          ".read":  "auth != null",
+          ".write": "auth != null"
+        }
+      }
+    }
+  }
+}

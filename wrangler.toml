@@ -1,0 +1,10 @@
+name = "elimuconnect"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+[build]
+command = "npm run pages:build"
+
+[vars]
+NEXT_PUBLIC_APP_URL = "https://elimuconnect.pages.dev"

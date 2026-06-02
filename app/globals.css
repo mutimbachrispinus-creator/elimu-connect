@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --elimu-green: #166534;
+  --elimu-light: #22c55e;
+  --elimu-gold: #f59e0b;
+}
+
+/* ─── Custom scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+/* ─── Focus ring ────────────────────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--elimu-light);
+  outline-offset: 2px;
+}
+
+/* ─── Classroom video grid ──────────────────────────────────────────────── */
+.classroom-grid {
+  display: grid;
+  gap: 8px;
+}
+.classroom-grid[data-count="1"] { grid-template-columns: 1fr; }
+.classroom-grid[data-count="2"] { grid-template-columns: repeat(2, 1fr); }
+.classroom-grid[data-count="3"],
+.classroom-grid[data-count="4"] { grid-template-columns: repeat(2, 1fr); }
+.classroom-grid[data-count="5"],
+.classroom-grid[data-count="6"] { grid-template-columns: repeat(3, 1fr); }
+.classroom-grid[data-count="7"],
+.classroom-grid[data-count="8"],
+.classroom-grid[data-count="9"] { grid-template-columns: repeat(3, 1fr); }
+
+@media (min-width: 1024px) {
+  .classroom-grid[data-count="4"] { grid-template-columns: repeat(2, 1fr); }
+  .classroom-grid[data-count="9"] { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ─── Hero gradient overlay ─────────────────────────────────────────────── */
+.hero-gradient {
+  background: linear-gradient(135deg, #052e16 0%, #166534 45%, #15803d 100%);
+}
+
+/* ─── Glass card ────────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ─── Whiteboard canvas ─────────────────────────────────────────────────── */
+.whiteboard-canvas {
+  cursor: crosshair;
+  touch-action: none;
+}
+
+/* ─── Dashboard sidebar active item ────────────────────────────────────── */
+.sidebar-item-active {
+  @apply bg-elimu-50 text-elimu-700 font-semibold border-r-2 border-elimu-600;
+}
+
+/* ─── Spinner ────────────────────────────────────────────────────────────── */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 20px; height: 20px;
+  border: 2px solid #e2e8f0;
+  border-top-color: var(--elimu-green);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+/* ─── Ticker text ────────────────────────────────────────────────────────── */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 30s linear infinite; }
